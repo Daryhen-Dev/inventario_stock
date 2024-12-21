@@ -1,6 +1,6 @@
 import {create} from "zustand";
 import { supabase } from "../supabase/supabase.config";
-import { InsertarUsuario } from "../supabase/crudUsuario";
+import { InsertarUsuario, MostrarUsuarios } from "../supabase/crudUsuario";
 
 export const useUsuarioStore = create((set, get) =>({
     insertarUsuarioAdmin: async (p) => {
@@ -12,5 +12,12 @@ export const useUsuarioStore = create((set, get) =>({
         if(error) return
         const datauser = await InsertarUsuario({idauth:data.user.id, fecharegistro: new Date(), correo: p.correo,tipouser: "admin"  })
         return datauser
+    },
+    idusuario:0,
+    mostrarUsuarios: async () => {
+        const response = await MostrarUsuarios()
+        set({idusuario: response.id})
+        return response
     }
+
 }))
