@@ -8,8 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import { SpinnerLoader } from "../components/molecule/SpinnerLoader";
 import { ErrorMolecule } from "../components/molecule/ErrorMolecule";
 import { useEmpresaStore } from "../store/EmpresaStore";
-import { useEffect } from "react";
-import { MostrarEmpresa } from "../supabase/crudEmpresa";
+import { Configuracion } from "../pages/Configuracion";
+import { Marca } from "../pages/Marca";
 
 
 
@@ -31,6 +31,8 @@ export function MyRountes() {
             <Route path="/login" element={<Login />} />
             <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
                <Route path="/" element={<Home />} />
+               <Route path="/configurar" element={<Configuracion />} />
+               <Route path="/configurar/marca" element={<Marca />} />
             </Route>
         </Routes>
     )

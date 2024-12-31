@@ -31,6 +31,7 @@ export function LoginTemplate() {
       password: data.password,
     });
     if (response) {
+      console.log(response, data);
       navigate("/");
     } else {
       setStateInicio(true);

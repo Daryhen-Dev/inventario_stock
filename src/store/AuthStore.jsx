@@ -9,8 +9,8 @@ export const useAuthStore= create((set, get) => ({
                         password: p.password
                 }
             )
-            console.log(data, error, p)
             if (error) {
+                console.log(error)
                 return null
             } else {
                 return data.user
