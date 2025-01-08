@@ -66,5 +66,5 @@ export async function BuscarMarca(p) {
         footer: '<a href="">Agregue una nueva descripcion</a>',          
     })
    }
-   return data;
+   return data ?? [];
 }

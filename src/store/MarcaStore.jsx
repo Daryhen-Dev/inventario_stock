@@ -3,7 +3,7 @@ import { BuscarMarca, EditarMarca, EliminarMarca, InsertMarca, MostrarMarca } fr
 
 export const useMarcaStore = create((set, get) => ({
     buscador: "",
-    setBuscador: (p) => {set({buscardor: p})},
+    setBuscador: (p) => {set({buscador: p})},
     dataMarca: [],
     marcaItemSelect:[],
     parametros:{},
@@ -38,5 +38,6 @@ export const useMarcaStore = create((set, get) => ({
     buscarMarca: async (p) => {
         const response = await BuscarMarca(p)
         set({dataMarca: response})
+        return response
     }
 }))

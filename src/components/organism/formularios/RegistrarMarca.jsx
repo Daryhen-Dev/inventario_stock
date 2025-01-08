@@ -6,6 +6,7 @@ import { useEmpresaStore } from "../../../store/EmpresaStore";
 import { useMarcaStore } from "../../../store/MarcaStore";
 import { InputText } from "./InputText";
 import { Btnsave } from "../../molecule/Btnsave";
+import { ConvertirCapitalize } from "../../../utils/Conversiones";
 export function RegistrarMarca({ onClose, dataSelect, accion }) {
   const { insertMarca, editMarca } = useMarcaStore();
   const { dataempresa } = useEmpresaStore();
@@ -18,13 +19,13 @@ export function RegistrarMarca({ onClose, dataSelect, accion }) {
     if (accion === "Editar") {
       const p = {
         id: dataSelect.id,
-        description: data.nombre,
+        description: ConvertirCapitalize(data.nombre),
       };
       await editMarca(p);
       onClose();
     } else {
       const p = {
-        _descripcion: data.nombre,
+        _descripcion: ConvertirCapitalize(data.nombre),
         _idempresa: dataempresa.id,
       };
       await insertMarca(p);
@@ -32,8 +33,9 @@ export function RegistrarMarca({ onClose, dataSelect, accion }) {
     }
   }
   useEffect(() => {
-    if (accion === "Editar") {
-    }
+    // if (accion === "Editar") {
+
+    // }
   }, []);
   return (
     <Container>

@@ -10,14 +10,13 @@ export const Marca = () => {
     const {isLoading, error} = useQuery({
         queryKey: ["mostrar marca", {id_empresa: dataempresa?.id}], 
         queryFn: () =>mostrarMarca({id_empresa: dataempresa?.id}), enabled:dataempresa?.id!=null})
-    const {data:buscarData} = useQuery({
-            queryKey: ["buscar marca", {id_empresa: dataempresa.id, descripcion:buscador}], 
-            queryFn: () =>buscarMarca({id_empresa: dataempresa.id, descripcion: buscador}), enabled:dataempresa.id!=null})
-    
+    const { data: buscarData } = useQuery({
+            queryKey: ["buscar marca", {id_empresa: dataempresa.id, descripcion: buscador}], 
+            queryFn: () =>buscarMarca({id_empresa: dataempresa.id, descripcion: buscador}), 
+            enabled: dataempresa.id!=null})
+
      if(isLoading) return <SpinnerLoader/>
-
      if(error) return <div>{error.message}</div>
-
     return (
          <MarcaTemplate data={dataMarca} />
     )
